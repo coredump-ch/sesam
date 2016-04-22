@@ -4,12 +4,12 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def main():
     return render_template('main.html')
 
 
-@app.route('/open', methods=['POST'])
+@app.route('/', methods=['POST'])
 def open():
     email = request.form['email']
     password = request.form['password']
