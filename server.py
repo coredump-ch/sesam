@@ -15,7 +15,7 @@ def main():
 
 
 @app.route('/%s/' % APP_ROOT, methods=['POST'])
-def open():
+def process():
     email = request.form['email']
     password = request.form['password']
     if check_credentials(email, password):
@@ -26,8 +26,15 @@ def open():
 
 
 def check_credentials(email, password):
-    # TODO: Check credentials
-    return True
+    if not email or not password:
+        return False
+    with open('credentials.txt', 'r') as f:
+        lines = [
+            map(lambda x: x.strip(), line.split(':'))
+            for line in f
+        ]
+        data = dict(lines)
+    return data.get(email) == password
 
 
 def trigger():
