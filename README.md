@@ -23,3 +23,12 @@ Hauptordner liegen:
     email1@example.com: password
     email2@example.com: p@ssw0rd
     ...
+
+## Configuration variables
+
+The server can be configured using the following env variables:
+
+- `OPENDOOR_PATH`: Path to the [opendoor](./opendoor/) binary.
+- `UUID`: The website will be mounted on this value (ideally an UUID).
+  Example: `UUID=1234` will result in the mount point `/1234/`.
+  Default value is `test`.
