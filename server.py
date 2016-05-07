@@ -18,14 +18,14 @@ def main():
 def process():
     email = request.form['email']
     password = request.form['password']
-    if check_credentials(email, password):
+    if credentials_valid(email, password):
         trigger()
         return 'Opened', 204
     else:
         return 'Bad credentials', 401
 
 
-def check_credentials(email, password):
+def credentials_valid(email, password):
     if not email or not password:
         return False
     with open('credentials.txt', 'r') as f:
