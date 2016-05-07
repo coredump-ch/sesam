@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
+
 {% block content %}
 <h1>Sesam, Öffne Dich!</h1>
 
 <p>Um die Türe zu öffnen, bitte unten deine E-Mail-Adresse und dein Passwort eingeben.</p>
-<form method="post" action="">
+<form id="opendoor" method="post" action="">
     <div class="form-group">
         <input type="email" class="form-control" id="email" name="email" placeholder="E-Mail">
     </div>
