@@ -44,6 +44,7 @@ def credentials_valid(email, password):
         ]
         data = dict(lines)
     if data.get(email) == password:
+        logger.info('User %s opened the door', email)
         return True
     else:
         logger.warning('Bad login attempt with email %s', email)
