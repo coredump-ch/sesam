@@ -1,10 +1,12 @@
 import os
 import subprocess
+import logging
 
 from flask import Flask, request, render_template
 
 
 app = Flask(__name__)
+logger = logging.getLogger('sesam')
 
 APP_ROOT = os.environ.get('UUID', 'test')
 
