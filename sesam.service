@@ -1,0 +1,22 @@
+[Unit]
+Description=Sesam öffne dich
+After=network.target
+
+[Service]
+Type=simple
+User=coredump
+Group=coredump
+ExecStart=/home/coredump/sesam/VIRTUAL/bin/uwsgi --plugin python3 --socket 0.0.0.0:9000 -w server:app --master --processes 2 --threads 2 --max-requests 20 --reload-mercy 10 --worker-reload-mercy 10
+WorkingDirectory=/home/coredump/sesam
+ReadOnlyDirectories=/
+ReadWriteDirectories=/home/coredump/sesam
+ProtectSystem=full
+TimeoutStartSec=5
+TimeoutStopSec=5
+Restart=on-failure
+KillSignal=SIGINT
+Environment=UUID=random-uuid-here
+Environment=OPENDOOR_PATH=/home/coredump/opendoor
+
+[Install]
+WantedBy=multi-user.target
