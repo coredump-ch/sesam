@@ -29,6 +29,13 @@ def process():
 
 def credentials_valid(email, password):
     if not email or not password:
+        logger.error('Either email or password were not defined')
+        return False
+    if not os.path.exists('credentials.txt'):
+        logger.error('File credentials.txt does not exist')
+        return False
+    if not os.path.isfile('credentials.txt'):
+        logger.error('Path credentials.txt is not a file')
         return False
     with open('credentials.txt', 'r') as f:
         lines = [
