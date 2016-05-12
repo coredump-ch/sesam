@@ -43,7 +43,11 @@ def credentials_valid(email, password):
             for line in f
         ]
         data = dict(lines)
-    return data.get(email) == password
+    if data.get(email) == password:
+        return True
+    else:
+        logger.warning('Bad login attempt with email %s', email)
+        return False
 
 
 def trigger():
